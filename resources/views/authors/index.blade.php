@@ -8,7 +8,7 @@
                     <div class="panel-heading">Admin</div>
 
                     <div class="panel-body">
-                        <a href="{{ route('authors.create') }}" class="btn btn-default">Add New Conference</a>
+                        <a href="{{ route('authors.create') }}" class="btn btn-primary">Add New Conference</a>
                         <table class="table table-bordered">
                             <thead>
                             <tr>
@@ -26,7 +26,7 @@
                                     <td>{{ $author->date }}</td>
                                     <td>{{ $author->address }}</td>
                                     <td>
-                                        <a href="{{ route('authors.edit', $author->id) }}" class="btn btn-default">Edit</a>
+                                        <a href="{{ route('authors.edit', $author->id) }}" class="btn btn-primary">Edit</a>
                                         <form action="{{ route('authors.destroy', $author->id) }}" method="POST"
                                               style="display: inline"
                                               onsubmit="return confirm('Are you sure?');">

@@ -35,7 +35,7 @@
                             <br />
                             <input type="text" name="address" value="{{ $author->address }}" />
                             <br /><br />
-                            <input type="submit" value="Submit" class="btn btn-default" />
+                            <input type="submit" value="Submit" class="btn btn-primary" />
                         </form>
                     </div>
                 </div>
