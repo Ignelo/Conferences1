@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Author;
+use App\Http\Controllers\AuthorsController;
+use App\Http\Controllers\Conferences;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,11 +16,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/admin', [App\Http\Controllers\admin::class, 'index'])->name('admin.index');
+Route::get('/', [App\Http\Controllers\AuthorsController::class, 'show'])->name('home');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware('auth')->group(function ()
+{
+    Route::get('admin/conferences', [App\Http\Controllers\AuthorsController::class, 'index'])->name('authors.index');
+
+    Route::get('admin/conferences/create', [App\Http\Controllers\AuthorsController::class, 'create'])->name('authors.create');
+
+    Route::patch('admin/conferences', [App\Http\Controllers\AuthorsController::class, 'store'])->name('authors.store');
+
+    Route::get('admin/conferences/edit/{id}', [App\Http\Controllers\AuthorsController::class, 'edit'])->name('authors.edit');
+
+    Route::patch('admin/conferences/edit/{id}', [App\Http\Controllers\AuthorsController::class, 'update'])->name('authors.update');
+
+    Route::delete('admin/conferences/{id}', [App\Http\Controllers\AuthorsController::class, 'destroy'])->name('authors.destroy');
+
+});
